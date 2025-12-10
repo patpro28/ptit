@@ -1,4 +1,4 @@
-name: Deploy Next.js to Cloudflare Pages
+name: Deploy Next.js to Cloudflare Pages (via Wrangler)
 
 on:
   push:
@@ -13,32 +13,38 @@ jobs:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
 
-      # 1. SETUP NODE.JS (KHÔNG DÙNG cache: pnpm Ở ĐÂY)
-      - name: ⚙️ Setup Node.js (Chỉ thiết lập môi trường)
+      # 1. SETUP NODE.JS (Thiết lập môi trường và cache pnpm)
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20' 
-          # KHÔNG có cache: 'pnpm' ở đây để tránh gọi pnpm quá sớm.
+          # cache: 'pnpm' 
           
-      # 2. CÀI ĐẶT PNPM EXECUTABLE (BƯỚC SỬA LỖI)
+      # 2. CÀI ĐẶT PNPM EXECUTABLE
       - name: 📦 Install pnpm executable
         uses: pnpm/action-setup@v3
         with:
           version: 8 
-          run_install: false # Vẫn không chạy install ở đây
+          run_install: false
 
-      # 3. CHẠY BUILD & DEPLOY (Action này sẽ tự động chạy pnpm install và pnpm run build)
-      # Action này sẽ tự động xử lý caching pnpm và chạy lệnh build/deploy.
-      - name: 🛠️ Build and Deploy
-        uses: cloudflare/pages-action@v1
+      # 3. CÀI ĐẶT DEPENDENCIES & BUILD (Sử dụng pnpm)
+      - name: 🛠️ Install dependencies and Run Build
+        run: |
+          pnpm install
+          pnpm run build
+        
+      # 4. TRIỂN KHAI BẰNG WRANGLER (Thay thế cho Pages Action cũ)
+      # Bước này sẽ tải lên thư mục output (.open-next) lên Cloudflare Pages
+      - name: 🚀 Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ptit 
+          # Thư mục OpenNext tạo ra, chứa cả Worker và Assets
+          workingDirectory: .open-next
           
-          # Cần đảm bảo rằng các Secrets đã được thiết lập.
-          command: pnpm run build 
+          # Lệnh triển khai Pages sử dụng wrangler (Direct Upload)
+          command: pages deploy .open-next/assets --project-name ptit
           
-          directory: .open-next/assets
-          
-          framework: next
+        env:
+          # Cần thiết cho Wrangler xác thực
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
