@@ -35,7 +35,7 @@ jobs:
           command: pnpm run build 
           
           # Thư mục Output: Sau khi chạy next-on-pages, output sẽ nằm ở đây
-          directory: .vercel/output/static 
+          directory: .open-next/assets
           
           # Cấu hình cho Next.js
           framework: next
