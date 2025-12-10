@@ -69,11 +69,10 @@ export async function addQuestion(formData: FormData) {
     try {
         await db.query(
             `
-      INSERT INTO questions (id, category, question, options, correct_answer)
-      VALUES (?, ?, ?, ?, ?)
+      INSERT INTO questions (category, question, options, correct_answer)
+      VALUES (?, ?, ?, ?)
       `,
             [
-                newQuestion.id,
                 newQuestion.categoryName,
                 newQuestion.question,
                 JSON.stringify(newQuestion.options),
