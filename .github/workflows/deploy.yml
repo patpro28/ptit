@@ -13,12 +13,11 @@ jobs:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
 
-      # 1. SETUP NODE.JS (Thiết lập môi trường và cache pnpm)
+      # 1. SETUP NODE.JS
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20' 
-          # cache: 'pnpm' 
           
       # 2. CÀI ĐẶT PNPM EXECUTABLE
       - name: 📦 Install pnpm executable
@@ -27,24 +26,25 @@ jobs:
           version: 8 
           run_install: false
 
-      # 3. CÀI ĐẶT DEPENDENCIES & BUILD (Sử dụng pnpm)
-      - name: 🛠️ Install dependencies and Run Build
+      # 3. BUILD (PHÁ VỠ VÒNG LẶP ĐỆ QUY)
+      - name: 🛠️ Install dependencies and Run OpenNext Build
         run: |
-          pnpm install
-          pnpm run build
+          pnpm install --frozen-lockfile
+          
+          # Chạy OpenNext với biến môi trường chỉ định lệnh build Next.js gốc
+          OPEN_NEXT_BUILD_CMD="pnpm run build" pnpm run open-next-build
         
-      # 4. TRIỂN KHAI BẰNG WRANGLER (Thay thế cho Pages Action cũ)
-      # Bước này sẽ tải lên thư mục output (.open-next) lên Cloudflare Pages
+        env:
+          # Cần thiết để OpenNext sử dụng phiên bản Node phù hợp
+          NODE_VERSION: 20
+
+      # 4. TRIỂN KHAI BẰNG WRANGLER (Direct Upload)
       - name: 🚀 Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
-          # Thư mục OpenNext tạo ra, chứa cả Worker và Assets
           workingDirectory: .open-next
-          
-          # Lệnh triển khai Pages sử dụng wrangler (Direct Upload)
           command: pages deploy .open-next/assets --project-name ptit
           
         env:
-          # Cần thiết cho Wrangler xác thực
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

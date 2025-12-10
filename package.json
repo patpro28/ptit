@@ -13,7 +13,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && open-next build",
+    "build": "next build",
+    "open-next-build": "open-next build",
     "start": "next start",
     "lint": "eslint"
   },
