@@ -10,7 +10,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-on-pages",
     "start": "next start",
     "lint": "eslint"
   },
@@ -29,6 +29,7 @@
     "remark-math": "^6.0.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "latest",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

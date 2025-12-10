@@ -16,17 +16,26 @@ jobs:
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Nên dùng phiên bản Node.js LTS được Cloudflare hỗ trợ
+          node-version: '20' 
+          # Thiết lập để sử dụng pnpm nếu bạn đang dùng pnpm (như trong hình)
+          cache: 'pnpm' 
 
       - name: 📦 Install dependencies
-        run: npm install # hoặc yarn install / pnpm install
+        run: pnpm install # Sửa thành pnpm install
 
       - name: 🛠️ Build and Deploy
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: your-project-name # Tên dự án Pages của bạn trên Cloudflare
-          directory: .vercel/output/static # Thư mục output cho Next.js trên Pages (cần dùng next-on-pages)
-          # Nếu bạn sử dụng next-on-pages, bạn sẽ cần chạy lệnh build
-          command: npm run build # Lệnh build của bạn, thường là "next build" hoặc kèm next-on-pages
+          projectName: ptit # Dùng tên Project mà bạn đã đặt trên Cloudflare Pages
+          
+          # Lệnh Build: Cần chạy lệnh build của Next.js, sau đó là next-on-pages
+          # Nếu bạn đã cập nhật scripts trong package.json, thì chỉ cần gọi script đó.
+          command: pnpm run build 
+          
+          # Thư mục Output: Sau khi chạy next-on-pages, output sẽ nằm ở đây
+          directory: .vercel/output/static 
+          
+          # Cấu hình cho Next.js
+          framework: next
