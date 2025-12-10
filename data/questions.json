@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "category": "Lập trình",
+        "question": "ReactJS là gì?",
+        "options": [
+            "Một Database",
+            "Một thư viện JavaScript để xây dựng giao diện người dùng",
+            "Một ngôn ngữ lập trình",
+            "Một hệ điều hành"
+        ],
+        "correctAnswer": "Một thư viện JavaScript để xây dựng giao diện người dùng"
+    },
+    {
+        "id": 2,
+        "category": "Khoa học",
+        "question": "Hành tinh nào gần Mặt Trời nhất?",
+        "options": [
+            "Sao Kim",
+            "Sao Hỏa",
+            "Sao Thủy",
+            "Trái Đất"
+        ],
+        "correctAnswer": "Sao Thủy"
+    },
+    {
+        "id": 3,
+        "category": "Lập trình",
+        "question": "Trong Next.js, thư mục nào chứa các route công khai?",
+        "options": [
+            "/public",
+            "/pages",
+            "/app",
+            "/components"
+        ],
+        "correctAnswer": "/public"
+    },
+    {
+        "id": 4,
+        "category": "Toán học",
+        "question": "Căn bậc hai của 64 là bao nhiêu?",
+        "options": [
+            "6",
+            "7",
+            "8",
+            "9"
+        ],
+        "correctAnswer": "8"
+    }
+]

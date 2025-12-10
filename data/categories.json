@@ -1,0 +1,18 @@
+[
+    {
+        "id": "lap-trinh",
+        "name": "Lập trình"
+    },
+    {
+        "id": "khoa-hoc",
+        "name": "Khoa học"
+    },
+    {
+        "id": "toan-hoc",
+        "name": "Toán học"
+    },
+    {
+        "id": "ktct",
+        "name": "Kinh tế chính trị"
+    }
+]

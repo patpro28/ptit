@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "question": "Đổi số nguyên thành số nhị phân",
+    "options": [
+      "```cpp\nchar *doinhiphan(long n) {\n\tstatic char s[65];\n\ts[64] = '\\0';\n\tfor (int i = 63; i >= 0; i--) {\n\t\ts[i] = (n & 1) ? '1' : '0';\n\t\tn >>= 1;\n\t}\n\treturn s;\n}\n```"
+    ],
+    "correctAnswer": ""
+  },
+  {
+    "id": 2,
+    "question": "Đổi số lẻ thành số nhị phân",
+    "options": [
+      "```cpp\nchar *doinhiphan(float n) {\n\tstatic char s[101];\n\tint intPart = (int)n;\n\tfloat fracPart = n - intPart;\n\tfor (int i = 31; i >= 0; i--) {\n\t\ts[i] = (intPart & 1) + '0';\n\t\tintPart >>= 1;\n\t}\n\ts[32] = '.';\n\tfor (int i = 33; i < 100; i++) {\n\t\tfracPart *= 2;\n\t\tif (fracPart >= 1) {\n\t\t\ts[i] = '1';\n\t\t\tfracPart -= 1;\n\t\t} else {\n\t\t\ts[i] = '0';\n\t\t}\n\t}\n\ts[100] = '\\0';\n\treturn s;\n}\n```"
+    ],
+    "correctAnswer": "Frontend Framework"
+  },
+  {
+    "id": 3,
+    "question": "Sắp xếp dãy các số thực $a[0], a[1],..., a[n-1]$ theo thứ tự tăng dần bằng giải thuật chọn Selection Sort",
+    "options": [
+      "```cpp\nvoid selectsort(float a[], int n) {\n\tfor (int i = 0; i < n; ++i) {\n\t\tint min_idx = i;\n\t\tfor (int j = i + 1; j < n; ++j)\n\t\t\tif (a[j] < a[min_idx])\n\t\t\t\tmin_idx = j;\n\t\tfloat temp = a[i];\n\t\ta[i] = a[min_idx];\n\t\ta[min_idx] = temp;\n\t}\n}\n```"
+    ],
+    "correctAnswer": "105"
+  },
+  {
+    "id": 3,
+    "question": "Sắp xếp dãy các số thực $a[0], a[1],..., a[n-1]$ theo thứ tự giảm dần bằng giải thuật chọn Selection Sort",
+    "options": [
+      "```cpp\nvoid selectsort(float a[], int n) {\n\tfor (int i = 0; i < n; ++i) {\n\t\tint min_idx = i;\n\t\tfor (int j = i + 1; j < n; ++j)\n\t\t\tif (a[j] < a[min_idx])\n\t\t\t\tmin_idx = j;\n\t\tfloat temp = a[i];\n\t\ta[i] = a[min_idx];\n\t\ta[min_idx] = temp;\n\t}\n}\n```"
+    ],
+    "correctAnswer": "105"
+  },
+  {
+    "id": 1765272280752,
+    "question": "Sắp xếp dãy các số thực $a[0], a[1],..., a[n-1]$ theo thứ tự giảm dần bằng giải thuật nổi bọt Bubble Sort.",
+    "options": [
+      "```cpp\r\nvoid bubblesort(float a[], int n) {\r\n    for (int i = n - 2; i >= 0; --i)\r\n        for (int j = i + 1; j < n; ++j)\r\n            if (a[j] < a[j - 1]) {\r\n                float temp = a[j];\r\n                a[j] = a[j - 1];\r\n                a[j - 1] = temp;\r\n            }\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nvoid bubblesort(float a[], int n) {\r\n    for (int i = n - 2; i >= 0; --i)\r\n        for (int j = i + 1; j < n; ++j)\r\n            if (a[j] < a[j - 1]) {\r\n                float temp = a[j];\r\n                a[j] = a[j - 1];\r\n                a[j - 1] = temp;\r\n            }\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272604916,
+    "question": "Tính $n!$.",
+    "options": [
+      "```cpp\r\nlong giaithua(int n) {\r\n    if (n == 0) return 1;\r\n    return n * giaithua(n - 1);\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nlong giaithua(int n) {\r\n    if (n == 0) return 1;\r\n    return n * giaithua(n - 1);\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272641941,
+    "question": "Đếm số lần xuất hiện của số $x$ trong dãy số thực $a[0], a[1],..., a[n-1]$.",
+    "options": [
+      "```cpp\r\nint demso(float a[], int n, float x) {\r\n    int count = 0;\r\n    for (int i = 0; i < n; ++i) {\r\n        if (a[i] == x) {\r\n            count++;\r\n        }\r\n    }\r\n    return count;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nint demso(float a[], int n, float x) {\r\n    int count = 0;\r\n    for (int i = 0; i < n; ++i) {\r\n        if (a[i] == x) {\r\n            count++;\r\n        }\r\n    }\r\n    return count;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272674202,
+    "question": "Tính tổng các số dương trong dãy số thực $a[0], a[1],..., a[n-1]$.",
+    "options": [
+      "```cpp\r\nfloat tong_duong(float a[], int n) {\r\n    float sum = 0;\r\n    for (int i = 0; i < n; i++) {\r\n        if (a[i] > 0) {\r\n            sum += a[i];\r\n        }\r\n    }\r\n    return sum;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nfloat tong_duong(float a[], int n) {\r\n    float sum = 0;\r\n    for (int i = 0; i < n; i++) {\r\n        if (a[i] > 0) {\r\n            sum += a[i];\r\n        }\r\n    }\r\n    return sum;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272708245,
+    "question": "Tính tổng các số âm trong dãy số thực $a[0], a[1],..., a[n-1]$.",
+    "options": [
+      "```cpp\r\nfloat tong_am(float a[], int n) {\r\n    float sum = 0;\r\n    for (int i = 0; i < n; i++) {\r\n        if (a[i] < 0) {\r\n            sum += a[i];\r\n        }\r\n    }\r\n    return sum;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nfloat tong_am(float a[], int n) {\r\n    float sum = 0;\r\n    for (int i = 0; i < n; i++) {\r\n        if (a[i] < 0) {\r\n            sum += a[i];\r\n        }\r\n    }\r\n    return sum;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272775850,
+    "question": "Tính giá trị lớn nhất trong dãy số thực $a[0], a[1],..., a[n-1]$.",
+    "options": [
+      "```cpp\r\nfloat lon_nhat(float a[], int n) {\r\n    float ln = a[0];\r\n    for (int i = 1; i < n; ++i)\r\n        if (ln < a[i]) ln = a[i];\r\n    return ln;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nfloat lon_nhat(float a[], int n) {\r\n    float ln = a[0];\r\n    for (int i = 1; i < n; ++i)\r\n        if (ln < a[i]) ln = a[i];\r\n    return ln;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272799999,
+    "question": "Tính giá trị nhỏ nhất trong dãy số thực $a[0], a[1],..., a[n-1]$.",
+    "options": [
+      "```cpp\r\nfloat nho_nhat(float a[], int n) {\r\n    float nn = a[0];\r\n    for (int i = 1; i < n; ++i)\r\n        if (nn > a[i]) nn = a[i];\r\n    return nn;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nfloat nho_nhat(float a[], int n) {\r\n    float nn = a[0];\r\n    for (int i = 1; i < n; ++i)\r\n        if (nn > a[i]) nn = a[i];\r\n    return nn;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272836262,
+    "question": "Đếm tổng số ký tự là chữ hoa trong một xâu $s[]$.",
+    "options": [
+      "```cpp\r\nint tong_chu_hoa(char s[]) {\r\n    int cnt = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i)\r\n        if (s[i] >= 'A' && s[i] <= 'Z') cnt++;\r\n    return cnt;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nint tong_chu_hoa(char s[]) {\r\n    int cnt = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i)\r\n        if (s[i] >= 'A' && s[i] <= 'Z') cnt++;\r\n    return cnt;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765272868744,
+    "question": "Đếm tổng số ký tự là chữ thường trong một xâu $s[]$.",
+    "options": [
+      "```cpp\r\nint tong_chu_thuong(char s[]) {\r\n    int cnt = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i)\r\n        if (s[i] >= 'a' && s[i] <= 'z') cnt++;\r\n    return cnt;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nint tong_chu_thuong(char s[]) {\r\n    int cnt = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i)\r\n        if (s[i] >= 'a' && s[i] <= 'z') cnt++;\r\n    return cnt;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765273025674,
+    "question": "Đổi một xâu $s[]$ từ chữ thường thành chữ hoa.",
+    "options": [
+      "```cpp\r\n#include <stdlib.h>\r\n\r\nchar *doi_chu_hoa(char s[]) {\r\n    int len = 0;\r\n    while (s[len] != '\\0') len++;\r\n    char *result = (char*)malloc(len + 1);\r\n    int i = 0;\r\n    for (; s[i] != '\\0'; ++i) {\r\n        if (s[i] >= 'a' && s[i] <= 'z') {\r\n            result[i] = s[i] - ('a' - 'A');\r\n        } else {\r\n            result[i] = s[i];\r\n        }\r\n    }\r\n    result[i] = '\\0';\r\n    return result;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\n#include <stdlib.h>\r\n\r\nchar *doi_chu_hoa(char s[]) {\r\n    int len = 0;\r\n    while (s[len] != '\\0') len++;\r\n    char *result = (char*)malloc(len + 1);\r\n    int i = 0;\r\n    for (; s[i] != '\\0'; ++i) {\r\n        if (s[i] >= 'a' && s[i] <= 'z') {\r\n            result[i] = s[i] - ('a' - 'A');\r\n        } else {\r\n            result[i] = s[i];\r\n        }\r\n    }\r\n    result[i] = '\\0';\r\n    return result;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765273102522,
+    "question": "Đổi một xâu $s[]$ từ chữ hoa thành chữ thường.",
+    "options": [
+      "```cpp\r\n#include <stdlib.h>\r\n// Cần delete bộ nhớ sau khi sử dụng\r\nchar *doi_chu_thuong(char s[]) {\r\n    int len = 0;\r\n    while (s[len] != '\\0') len++;\r\n    char *result = (char*)malloc(len + 1);\r\n    int i = 0;\r\n    for (; s[i] != '\\0'; ++i) {\r\n        if (s[i] >= 'A' && s[i] <= 'Z') {\r\n            result[i] = s[i] + ('a' - 'A');\r\n        } else {\r\n            result[i] = s[i];\r\n        }\r\n    }\r\n    result[i] = '\\0';\r\n    return result;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\n#include <stdlib.h>\r\n// Cần delete bộ nhớ sau khi sử dụng\r\nchar *doi_chu_thuong(char s[]) {\r\n    int len = 0;\r\n    while (s[len] != '\\0') len++;\r\n    char *result = (char*)malloc(len + 1);\r\n    int i = 0;\r\n    for (; s[i] != '\\0'; ++i) {\r\n        if (s[i] >= 'A' && s[i] <= 'Z') {\r\n            result[i] = s[i] + ('a' - 'A');\r\n        } else {\r\n            result[i] = s[i];\r\n        }\r\n    }\r\n    result[i] = '\\0';\r\n    return result;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765273168677,
+    "question": "Kiểm tra dãy số thực $a[0], a[1],..., a[n-1]$ đã được sắp xếp theo thứ tự tăng dần hay không?",
+    "options": [
+      "```cpp\r\nint kiem_tra_sap_xep(float a[], int n) {\r\n    for (int i = 0; i < n - 1; ++i) {\r\n        if (a[i] > a[i + 1]) {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nint kiem_tra_sap_xep(float a[], int n) {\r\n    for (int i = 0; i < n - 1; ++i) {\r\n        if (a[i] > a[i + 1]) {\r\n            return 0;\r\n        }\r\n    }\r\n    return 1;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765273199529,
+    "question": "Đếm tổng số ký tự là chữ số trong một xâu $s[]$.",
+    "options": [
+      "```cpp\r\nint tong_chu_so(char s[]) {\r\n    int cnt = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i)\r\n        if (s[i] >= '0' && s[i] <= '9') cnt++;\r\n    return cnt;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nint tong_chu_so(char s[]) {\r\n    int cnt = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i)\r\n        if (s[i] >= '0' && s[i] <= '9') cnt++;\r\n    return cnt;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765273398334,
+    "question": "Nhập một số $c>0$ (ví dụ $c = 0.0001$) và một số thực $x$ rồi tính\r\n\r\n$$e^x = 1+\\frac{x}{1!}+\\frac{x^2}{2!}+\\ldots+\\frac{x^n}{n!}$$\r\n\r\ntổng được tính với $n$ đủ lớn sao cho bất đẳng thức $|\\frac{x^n}{n!}|\\le c$ thỏa mãn.",
+    "options": [
+      "```cpp\r\n#include <math.h>\r\n\r\nfloat ex(float x, float c) {\r\n    float res = 0;\r\n    float mu = 1, gt = 1;\r\n    int n = 0;\r\n    while (fabs(mu / gt) >= c) {\r\n        res += mu / gt;\r\n        mu *= x;\r\n        n++;\r\n        gt *= n;\r\n    }\r\n    return res;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\n#include <math.h>\r\n\r\nfloat ex(float x, float c) {\r\n    float res = 0;\r\n    float mu = 1, gt = 1;\r\n    int n = 0;\r\n    while (fabs(mu / gt) >= c) {\r\n        res += mu / gt;\r\n        mu *= x;\r\n        n++;\r\n        gt *= n;\r\n    }\r\n    return res;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765273467940,
+    "question": "Đếm số từ trong một xâu ký tự",
+    "options": [
+      "```cpp\r\nint dem_tu(char s[]) {\r\n    int count = 0;\r\n    int word = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i) \r\n        if (s[i] != ' ') {\r\n            if (word == 0) {\r\n                word = 1;\r\n                count++;\r\n            }\r\n        } else {\r\n            word = 0;\r\n        }\r\n    return count;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nint dem_tu(char s[]) {\r\n    int count = 0;\r\n    int word = 0;\r\n    for (int i = 0; s[i] != '\\0'; ++i) \r\n        if (s[i] != ' ') {\r\n            if (word == 0) {\r\n                word = 1;\r\n                count++;\r\n            }\r\n        } else {\r\n            word = 0;\r\n        }\r\n    return count;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  },
+  {
+    "id": 1765273554896,
+    "question": "Trích $n$ ký tự bên trái của một xâu $s[]$ từ vị trí $m$",
+    "options": [
+      "```cpp\r\nchar *trich_trai(char s[], int n, int m) {\r\n    static char result[100];\r\n    // Có thể kiểm tra xem m < length(s) hay không?\r\n    int i;\r\n    for (i = m; s[i] != '\\0' && i < m + n; ++i) {\r\n        result[i - m] = s[i];\r\n    }\r\n    result[i - m] = '\\0';\r\n    return result;\r\n}\r\n```"
+    ],
+    "correctAnswer": "```cpp\r\nchar *trich_trai(char s[], int n, int m) {\r\n    static char result[100];\r\n    // Có thể kiểm tra xem m < length(s) hay không?\r\n    int i;\r\n    for (i = m; s[i] != '\\0' && i < m + n; ++i) {\r\n        result[i - m] = s[i];\r\n    }\r\n    result[i - m] = '\\0';\r\n    return result;\r\n}\r\n```",
+    "categoryName": "lap-trinh"
+  }
+]

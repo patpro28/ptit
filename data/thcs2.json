@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "question": "Đổi số nguyên thành số nhị phân",
+        "options": [
+            "```cpp\nchar *doinhiphan(long n) {\n\tstatic char s[65];\n\ts[64] = '\\0';\n\tfor (int i = 63; i >= 0; i--) {\n\t\ts[i] = (n & 1) ? '1' : '0';\n\t\tn >>= 1;\n\t}\n\treturn s;\n}```"
+        ],
+        "correctAnswer": ""
+    },
+    {
+        "id": 2,
+        "question": "Next.js dùng để làm gì?",
+        "options": [
+            "Backend",
+            "Frontend Framework",
+            "Database",
+            "Testing"
+        ],
+        "correctAnswer": "Frontend Framework"
+    },
+    {
+        "id": 3,
+        "question": "Kết quả của đoạn code sau là gì?\n```javascript\nconst a = 10;\nconsole.log(a + '5');\n```",
+        "options": [
+            "15",
+            "105",
+            "NaN",
+            "Error"
+        ],
+        "correctAnswer": "105"
+    }
+]

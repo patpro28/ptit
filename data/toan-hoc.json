@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "question": "Tính tích phân sau:\n$$ \\int_{0}^{\\pi} \\sin(x) dx $$\nChọn đáp án đúng:",
+        "options": [
+            "$$ 0 $$",
+            "$$ 1 $$",
+            "$$ 2 $$",
+            "$$ \\pi $$"
+        ],
+        "correctAnswer": "$$ 2 $$"
+    },
+    {
+        "id": 2,
+        "question": "Giải phương trình bậc hai: $ax^2 + bx + c = 0$. Công thức nghiệm là gì?",
+        "options": [
+            "$$ x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} $$",
+            "$$ x = -b \\pm \\sqrt{b^2 - 4ac} $$"
+        ],
+        "correctAnswer": "$$ x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} $$"
+    }
+]

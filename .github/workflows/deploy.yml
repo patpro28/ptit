@@ -1,0 +1,32 @@
+name: Deploy Next.js to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main # Chạy khi có code được đẩy lên nhánh main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Nên dùng phiên bản Node.js LTS được Cloudflare hỗ trợ
+
+      - name: 📦 Install dependencies
+        run: npm install # hoặc yarn install / pnpm install
+
+      - name: 🛠️ Build and Deploy
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: your-project-name # Tên dự án Pages của bạn trên Cloudflare
+          directory: .vercel/output/static # Thư mục output cho Next.js trên Pages (cần dùng next-on-pages)
+          # Nếu bạn sử dụng next-on-pages, bạn sẽ cần chạy lệnh build
+          command: npm run build # Lệnh build của bạn, thường là "next build" hoặc kèm next-on-pages

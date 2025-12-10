@@ -1,0 +1,233 @@
+[
+    {
+        "id": 0,
+        "question": "Quan điểm nào dưới đây nói về nội dung cơ bản của công nghiệp hóa, hiện đại hóa ở nước ta là đúng?",
+        "options": [
+            "Xây dựng một cơ cấu kinh tế hợp lý, hiện đại và hiệu quả."
+        ],
+        "correctAnswer": "Xây dựng một cơ cấu kinh tế hợp lý, hiện đại và hiệu quả."
+    },
+    {
+        "id": 1,
+        "question": "Khi cung lớn hơn cầu hoặc cung nhỏ hơn cầu đều ảnh hưởng đến:",
+        "options": [
+            "Giá cả thị trường."
+        ],
+        "correctAnswer": "Giá cả thị trường."
+    },
+    {
+        "id": 2,
+        "question": "Giá trị của hàng hóa được biểu hiện thông qua yếu tố nào?",
+        "options": [
+            "Giá trị trao đổi."
+        ],
+        "correctAnswer": "Giá trị trao đổi."
+    },
+    {
+        "id": 3,
+        "question": "Vai trò của máy móc trong quá trình tạo ra giá trị thặng dư:",
+        "options": [
+            "Máy móc là tiền đề vật chất cho việc tạo ra giá trị thăng dư."
+        ],
+        "correctAnswer": "Máy móc là tiền đề vật chất cho việc tạo ra giá trị thăng dư."
+    },
+    {
+        "id": 4,
+        "question": "Chọn ý **không đúng** về lợi nhuận và giá trị thặng dư:",
+        "options": [
+            "Bản chất của lợi nhuận là giá trị thặng dư.",
+            "Lợi nhuận và giá trị thăng dư luôn bằng nhau.",
+            "Giá trị thăng dư được hình thành từ sản xuất còn lợi nhuận hình thành từ thị trường.",
+            "Lợi nhuận là hình thức biểu hiện của giá trị thặng dư."
+        ],
+        "correctAnswer": "Lợi nhuận và giá trị thăng dư luôn bằng nhau."
+    },
+    {
+        "id": 5,
+        "question": "Giá trị của hàng hóa là gì?",
+        "options": [
+            "Lao động xã hội của người sản xuất hàng hóa được kết tinh trong hàng hóa."
+        ],
+        "correctAnswer": "Lao động xã hội của người sản xuất hàng hóa được kết tinh trong hàng hóa."
+    },
+    {
+        "id": 6,
+        "question": "Những ý kiến nào dưới đây là sai?",
+        "options": [
+            "Tích lũy tư bản là biến một phần giá trị thặng dư thành tư bản.",
+            "Nguồn gốc của tích lũy tư bản là giá trị thặng dư.",
+            "Động cơ của tích lũy tư bản là giá trị thặng dư.",
+            "Tích lũy tư bản là sự tiết kiệm tư bản."
+        ],
+        "correctAnswer": "Tích lũy tư bản là sự tiết kiệm tư bản."
+    },
+    {
+        "id": 7,
+        "question": "Thời gian chu chuyển của tư bản gồm thời gian sản xuất và thời gian lưu thông. Thời gian sản xuất **không** gồm:",
+        "options": [
+            "Thời gian lao động.",
+            "Thời gian tiêu thụ hàng hóa.",
+            "Thời gian dự trữ sản xuất.",
+            "Thời gian gián đoạn lao động."
+        ],
+        "correctAnswer": "Thời gian tiêu thụ hàng hóa."
+    },
+    {
+        "id": 8,
+        "question": "Tư bàn thương nghiệp dưới chủ nghĩa tư bản ra đời từ:",
+        "options": [
+            "Tư bản công nghiệp."
+        ],
+        "correctAnswer": "Tư bản công nghiệp."
+    },
+    {
+        "id": 9,
+        "question": "Lợi nhuận là:",
+        "options": [
+            "Hình thức biến tướng của giá trị thặng dư."
+        ],
+        "correctAnswer": "Hình thức biến tướng của giá trị thặng dư."
+    },
+    {
+        "id": 10,
+        "question": "Trong cùng một thời gian lao động khi số lượng sản phẩm tăng lên còn giá trị một đơn vị hàng hóa và các điêu kiện khác không thay đôi thi đó là kết quả của:",
+        "options": [
+            "Tăng cường độ lao động."
+        ],
+        "correctAnswer": "Tăng cường độ lao động."
+    },
+    {
+        "id": 11,
+        "question": "Nhân tố nào quyết định lợi ích kinh tế?",
+        "options": [
+            "Quan hệ sở hữu."
+        ],
+        "correctAnswer": "Quan hệ sở hữu."
+    },
+    {
+        "id": 12,
+        "question": "Cung - cầu là quy luật kinh tế. Thế nào là cầu?",
+        "options": [
+            "Nhu cầu của xã hội về hàng hóa được biểu hiện trên thị trường ở một mức giá nhất định."
+        ],
+        "correctAnswer": "Nhu cầu của xã hội về hàng hóa được biểu hiện trên thị trường ở một mức giá nhất định."
+    },
+    {
+        "id": 13,
+        "question": "Mục đích cuối cùng của cạnh tranh là gì?",
+        "options": [
+            "Nhằm thu lợi nhuận nhiều nhất."
+        ],
+        "correctAnswer": "Nhằm thu lợi nhuận nhiều nhất."
+    },
+    {
+        "id": 14,
+        "question": "Ý kiến nào dưới đây đúng về bản chất của tiền tệ?",
+        "options": [
+            "Là hàng hóa đặc biệt đóng vai trò làm vật ngang giá chung."
+        ],
+        "correctAnswer": "Là hàng hóa đặc biệt đóng vai trò làm vật ngang giá chung."
+    },
+    {
+        "id": 15,
+        "question": "Ý kiến nào **không đúng** về quan hệ giữa tăng năng suất lao động với giá trị hàng hóa?",
+        "options": [
+            "Tăng năng suất lao động làm cho giá trị của tổng số hàng hóa làm ra trong 1 đơn vị thời gian thay đổi.",
+            "Tăng năng suất lao động thi giá trị 1 đơn vị hàng hóa thay đổi.",
+            "Giá trị 1 đơn vị hàng hóa tỷ lệ nghịch với năng suất lao động.",
+            "Tăng năng suất lao động thi số lượng sản phẩm được sản xuất ra trong 1 đơn vị thời gian nhiều hơn trước."
+        ],
+        "correctAnswer": "Tăng năng suất lao động làm cho giá trị của tổng số hàng hóa làm ra trong 1 đơn vị thời gian thay đổi."
+    },
+    {
+        "id": 16,
+        "question": "Kinh tế chính trị Mác-Lênin nghiên cứu",
+        "options": [
+            "Quan hệ sản xuất và trao đổi."
+        ],
+        "correctAnswer": "Quan hệ sản xuất và trao đổi."
+    },
+    {
+        "id": 17,
+        "question": "Hàng hóa nào sau đây là hàng hóa đặc biệt?",
+        "options": [
+            "Quyền sử dụng đất đai."
+        ],
+        "correctAnswer": "Quyền sử dụng đất đai."
+    },
+    {
+        "id": 18,
+        "question": "Quy mô cung cầu, chất lượng, cơ cấu, chúng loại hàng hóa, điều kiện mua bán trên thị trường là thể hiện chức năng nào của thị trường?",
+        "options": [
+            "Thông tin."
+        ],
+        "correctAnswer": "Thông tin."
+    },
+    {
+        "id": 19,
+        "question": "Đại hội IX của Đảng ta xác định nền kinh tế nước ta có mấy thành phần kinh tế?",
+        "options": [
+            "6 thành phần kinh tế."
+        ],
+        "correctAnswer": "6 thành phần kinh tế."
+    },
+    {
+        "id": 20,
+        "question": "Hàng hóa có hai thuộc tính là:",
+        "options": [
+            "Giá trị và giá trị sử dụng."
+        ],
+        "correctAnswer": "Giá trị và giá trị sử dụng."
+    },
+    {
+        "id": 21,
+        "question": "Giá cả của đồng tiền nước này được tính bằng đồng tiền của nước khác gọi là:",
+        "options": [
+            "Tỉ giá hối đoái."
+        ],
+        "correctAnswer": "Tỉ giá hối đoái."
+    },
+    {
+        "id": 22,
+        "question": "Lĩnh vực trao đồi, mua bán mà ở đó các chủ thể kinh tế tác động qua lại lẫn nhau để xác định giá cả và số lượng hàng hoá, dịch vụ được gọi là:",
+        "options": [
+            "Thị trường."
+        ],
+        "correctAnswer": "Thị trường."
+    },
+    {
+        "id": 23,
+        "question": "Quy luật giá trị yêu cầu người sản xuất phải đảm bảo thời gian lao động cá biệt phù hợp với thời gian lao động nào?",
+        "options": [
+            "Xã hội."
+        ],
+        "correctAnswer": "Xã hội."
+    },
+    {
+        "id": 24,
+        "question": "Chủ thể nảo dưới đây cần vận dụng quan hệ cung - cầu bằng cách điều tiết các trường hợp cung - cầu trên thị trường thông qua các giải pháp thích hợp?",
+        "options": [
+            "Nhà nước."
+        ],
+        "correctAnswer": "Nhà nước."
+    },
+    {
+        "id": 25,
+        "question": "Quá trình chuyển đổi từ lao động thủ công là chính sang lao động dựa trên sự phát triển của công nghiệp cơ khí là gì?",
+        "options": [
+            "Công nghiệp hóa."
+        ],
+        "correctAnswer": "Công nghiệp hóa."
+    },
+    {
+        "id": 26,
+        "question": "Quan điểm nào dưới đây không đúng khi lí giải về tính tất yếu của công nghiệp hóa, hiện đại hóa ở nước ta?",
+        "options": [
+            "Do yêu câu phải rút ngắn khoảng cách tụt hậu so với các nước khác.",
+            "Do yêu cầu phải tạo ra năng suất lao động xã hội cao.",
+            "Do yêu cầu phải xây dựng cơ sở vật chất - kĩ thuật của chủ nghĩa xã hội.",
+            "Do yêu cầu phát phát triển nhanh để tiến lên chủ nghĩa xã hội."
+        ],
+        "correctAnswer": "Do yêu cầu phát phát triển nhanh để tiến lên chủ nghĩa xã hội."
+    }
+]
