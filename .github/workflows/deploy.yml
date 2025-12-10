@@ -3,7 +3,7 @@ name: Deploy Next.js to Cloudflare Pages
 on:
   push:
     branches:
-      - main # Chạy khi có code được đẩy lên nhánh main
+      - main 
 
 jobs:
   deploy:
@@ -13,31 +13,28 @@ jobs:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js
+      - name: ⚙️ Setup Node.js (Cho pnpm cache)
+        # Bước này chỉ cần thiết lập môi trường Node.js và cache.
+        # Action Deploy bên dưới sẽ tự gọi pnpm install.
         uses: actions/setup-node@v4
         with:
           node-version: '20' 
-          # Thiết lập để sử dụng pnpm nếu bạn đang dùng pnpm (như trong hình)
           cache: 'pnpm'
-      - name: 📦 Install pnpm
-        run: npm install -g pnpm
+          
+      # XÓA BƯỚC: 📦 Install pnpm (npm install -g pnpm)
+      # XÓA BƯỚC: 📦 Install dependencies (pnpm install)
 
-      - name: 📦 Install dependencies
-        run: pnpm install # Sửa thành pnpm install
-
-      - name: 🛠️ Build and Deploy
+      - name: 🛠️ Build and Deploy (Sử dụng Cloudflare Action)
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ptit # Dùng tên Project mà bạn đã đặt trên Cloudflare Pages
+          projectName: ptit 
           
-          # Lệnh Build: Cần chạy lệnh build của Next.js, sau đó là next-on-pages
-          # Nếu bạn đã cập nhật scripts trong package.json, thì chỉ cần gọi script đó.
+          # Action sẽ tự động chạy lệnh này sau khi tự động cài đặt dependencies
           command: pnpm run build 
           
-          # Thư mục Output: Sau khi chạy next-on-pages, output sẽ nằm ở đây
+          # Output của OpenNext
           directory: .open-next/assets
           
-          # Cấu hình cho Next.js
           framework: next
