@@ -23,7 +23,7 @@ jobs:
       - name: 📦 Install pnpm executable
         uses: pnpm/action-setup@v3
         with:
-          version: 8 
+          version: 10.24.0
           run_install: false
 
       # 3. BUILD (PHÁ VỠ VÒNG LẶP ĐỆ QUY)
