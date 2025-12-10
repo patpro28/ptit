@@ -18,7 +18,9 @@ jobs:
         with:
           node-version: '20' 
           # Thiết lập để sử dụng pnpm nếu bạn đang dùng pnpm (như trong hình)
-          cache: 'pnpm' 
+          cache: 'pnpm'
+      - name: 📦 Install pnpm
+        run: npm install -g pnpm
 
       - name: 📦 Install dependencies
         run: pnpm install # Sửa thành pnpm install
