@@ -2,7 +2,8 @@
 
 export const CATEGORIES = [
     { label: "Tin học cơ sở 2", value: "lap-trinh" },
-    { label: "Khoa học", value: "khoa-hoc" },
-    { label: "Toán học", value: "toan-hoc" },
+    { label: "Xác suất thống kê", value: "xstk" },
+    { label: "Kĩ thuật số", value: "kts" },
+    { label: "Giải tích 2", value: "gt2" },
     { label: "Kinh tế chính trị", value: "ktct" },
 ];
