@@ -13,28 +13,32 @@ jobs:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js (Cho pnpm cache)
-        # Bước này chỉ cần thiết lập môi trường Node.js và cache.
-        # Action Deploy bên dưới sẽ tự gọi pnpm install.
+      # 1. Setup Node.js (Cho môi trường và cache)
+      - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20' 
           cache: 'pnpm'
           
-      # XÓA BƯỚC: 📦 Install pnpm (npm install -g pnpm)
-      # XÓA BƯỚC: 📦 Install dependencies (pnpm install)
-
-      - name: 🛠️ Build and Deploy (Sử dụng Cloudflare Action)
+      # 2. CÀI ĐẶT PNPM RÕ RÀNG
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 
+          run_install: false # Không chạy pnpm install ở đây, để action Pages xử lý
+          
+      # 3. BUILD VÀ DEPLOY
+      - name: 🛠️ Build and Deploy
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: ptit 
           
-          # Action sẽ tự động chạy lệnh này sau khi tự động cài đặt dependencies
+          # Action Pages sẽ tự động tìm và chạy lệnh này,
+          # và nó sẽ chạy pnpm install trước đó (vì nó tự phát hiện pnpm)
           command: pnpm run build 
           
-          # Output của OpenNext
           directory: .open-next/assets
           
           framework: next
