@@ -1,11 +1,15 @@
-import AddQuestionForm from '@/components/AddQuestionForm'; // Đảm bảo đúng đường dẫn
+import QuestionForm from "@/components/QuestionForm";
+import { addQuestion } from "@/app/actions";
 
-// Đây là Server Component mặc định (khác với AddQuestionForm là Client Component)
-export default function AddQuestionPage() {
+export default function AddPage() {
     return (
-        <div className="py-12">
-            <h1 className="text-3xl font-bold text-center mb-6">Quản lý thêm câu hỏi</h1>
-            <AddQuestionForm />
+        <div className="max-w-3xl mx-auto py-10">
+            <h1 className="text-2xl font-bold mb-6">Thêm câu hỏi mới</h1>
+
+            <QuestionForm
+                mode="create"
+                onSubmit={addQuestion}
+            />
         </div>
     );
 }

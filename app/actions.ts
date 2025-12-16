@@ -87,3 +87,72 @@ export async function addQuestion(formData: FormData) {
         return { success: false, message: "Lỗi server khi lưu dữ liệu" };
     }
 }
+
+export async function getQuestionById(id: number) {
+    try {
+        const [rows] = await db.query<any[]>(
+            `
+            SELECT
+                id,
+                question,
+                options,
+                correct_answer AS correctAnswer,
+                category
+            FROM questions
+            WHERE id = ?
+            LIMIT 1
+            `,
+            [id]
+        );
+
+        if (!rows || rows.length === 0) return null;
+
+        return {
+            ...rows[0],
+            options: JSON.parse(rows[0].options),
+        };
+    } catch (error) {
+        console.error("Lỗi DB (getQuestionById):", error);
+        return null;
+    }
+}
+
+export async function updateQuestion(formData: FormData) {
+    const id = Number(formData.get("id"));
+    const question = formData.get("question") as string;
+    const answer = formData.get("answer") as string;
+    const categoryId = formData.get("categoryId") as string;
+
+    const options = [answer]; // hiện đang dùng 1 đáp án duy nhất
+
+    if (!id || !question || !answer || !categoryId) {
+        return { success: false, message: "Thiếu dữ liệu cập nhật" };
+    }
+
+    try {
+        await db.query(
+            `
+            UPDATE questions
+            SET 
+                question = ?,
+                options = ?,
+                correct_answer = ?,
+                category = ?
+            WHERE id = ?
+            `,
+            [
+                question,
+                JSON.stringify(options),
+                answer,
+                categoryId,
+                id,
+            ]
+        );
+
+        revalidatePath("/");
+        return { success: true, message: "Cập nhật thành công!" };
+    } catch (error) {
+        console.error("Lỗi DB (updateQuestion):", error);
+        return { success: false, message: "Không thể cập nhật dữ liệu" };
+    }
+}
