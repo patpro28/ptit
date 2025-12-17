@@ -134,30 +134,32 @@ export default function Home() {
                     />
                   </div>
 
-                  {item.options.length > 0 && (
+                  {item.options.some(opt => opt.trim() !== "") && (
                     <div className="space-y-2">
-                      {item.options.map((opt, i) => {
-                        const isCorrect = opt === item.correctAnswer;
-                        return (
-                          <div
-                            key={i}
-                            className={`p-3 rounded-lg border text-sm font-medium flex items-start ${isCorrect
-                              ? "bg-green-50 border-green-300 text-green-900"
-                              : "bg-white border-gray-200 text-gray-700"
-                              }`}
-                          >
-                            <span className="mr-2 w-4">
-                              {isCorrect ? "✓" : "•"}
-                            </span>
-                            <div className="flex-1">
-                              <MarkdownRenderer
-                                content={opt}
-                                className="prose prose-sm max-w-none"
-                              />
+                      {item.options
+                        .filter(opt => opt.trim() !== "")
+                        .map((opt, i) => {
+                          const isCorrect = opt === item.correctAnswer;
+                          return (
+                            <div
+                              key={i}
+                              className={`p-3 rounded-lg border text-sm font-medium flex items-start ${isCorrect
+                                ? "bg-green-50 border-green-300 text-green-900"
+                                : "bg-white border-gray-200 text-gray-700"
+                                }`}
+                            >
+                              <span className="mr-2 w-4">
+                                {isCorrect ? "✓" : "•"}
+                              </span>
+                              <div className="flex-1">
+                                <MarkdownRenderer
+                                  content={opt}
+                                  className="prose prose-sm max-w-none"
+                                />
+                              </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
                     </div>
                   )}
                   {/* CORRECT ANSWER */}
