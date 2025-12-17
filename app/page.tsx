@@ -152,6 +152,16 @@ export default function Home() {
                       );
                     })}
                   </div>
+                  {/* CORRECT ANSWER */}
+                  <div className="mt-4 p-4 rounded-lg bg-green-100 border border-green-300">
+                    <p className="text-sm font-bold text-green-800 mb-1">
+                      ✅ Đáp án đúng
+                    </p>
+                    <MarkdownRenderer
+                      content={item.correctAnswer}
+                      className="prose prose-sm max-w-none text-green-900"
+                    />
+                  </div>
                 </div>
               </div>
             ))}
