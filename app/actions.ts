@@ -25,7 +25,7 @@ export async function getQuestionsByCategory(
     const offset = (page - 1) * limit;
 
     try {
-        const [rows] = await db.query<any[]>(
+        const rows = await db.query<any[]>(
             `
             SELECT
                 id,
@@ -95,7 +95,7 @@ export async function addQuestion(formData: FormData) {
 
 export async function getQuestionById(id: number) {
     try {
-        const [rows] = await db.query<any[]>(
+        const rows = await db.query<any[]>(
             `
             SELECT
                 id,
