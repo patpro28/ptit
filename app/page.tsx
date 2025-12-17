@@ -134,34 +134,37 @@ export default function Home() {
                     />
                   </div>
 
-                  {item.options.some(opt => opt.trim() !== "") && (
-                    <div className="space-y-2">
-                      {item.options
-                        .filter(opt => opt.trim() !== "")
-                        .map((opt, i) => {
-                          const isCorrect = opt === item.correctAnswer;
-                          return (
-                            <div
-                              key={i}
-                              className={`p-3 rounded-lg border text-sm font-medium flex items-start ${isCorrect
-                                ? "bg-green-50 border-green-300 text-green-900"
-                                : "bg-white border-gray-200 text-gray-700"
-                                }`}
-                            >
-                              <span className="mr-2 w-4">
-                                {isCorrect ? "✓" : "•"}
-                              </span>
-                              <div className="flex-1">
-                                <MarkdownRenderer
-                                  content={opt}
-                                  className="prose prose-sm max-w-none"
-                                />
+                  {item.options.some(
+                    e => typeof e === "string" && e.trim() !== ""
+                  ) && (
+                      <div className="space-y-2">
+                        {item.options
+                          .filter(e => typeof e === "string" && e.trim() !== "")
+                          .map((opt, i) => {
+                            const isCorrect = opt === item.correctAnswer;
+
+                            return (
+                              <div
+                                key={i}
+                                className={`p-3 rounded-lg border text-sm font-medium flex items-start ${isCorrect
+                                  ? "bg-green-50 border-green-300 text-green-900"
+                                  : "bg-white border-gray-200 text-gray-700"
+                                  }`}
+                              >
+                                <span className="mr-2 w-4">
+                                  {isCorrect ? "✓" : "•"}
+                                </span>
+                                <div className="flex-1">
+                                  <MarkdownRenderer
+                                    content={opt}
+                                    className="prose prose-sm max-w-none"
+                                  />
+                                </div>
                               </div>
-                            </div>
-                          );
-                        })}
-                    </div>
-                  )}
+                            );
+                          })}
+                      </div>
+                    )}
                   {/* CORRECT ANSWER */}
                   <div className="mt-4 p-4 rounded-lg bg-green-100 border border-green-300">
                     <p className="text-sm font-bold text-green-800 mb-1">
