@@ -19,19 +19,21 @@ export default function Home() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isPending, startTransition] = useTransition();
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
   const PAGE_SIZE = 5;
 
-  const loadMore = (catId: string, pageToLoad: number) => {
-    startTransition(async () => {
-      const data = await getQuestionsByCategory(catId, pageToLoad, PAGE_SIZE);
+  const loadMore = async (catId: string, pageToLoad: number) => {
+    setIsLoadingMore(true);
 
+    try {
+      const data = await getQuestionsByCategory(catId, pageToLoad, PAGE_SIZE);
       const catName = categoriesList.find(c => c.value === catId)?.label;
 
       if (data.length < PAGE_SIZE) {
-        setHasMore(false); // hết dữ liệu
+        setHasMore(false);
       }
 
       setQuestions(prev => [
@@ -40,7 +42,9 @@ export default function Home() {
       ]);
 
       setPage(pageToLoad);
-    });
+    } finally {
+      setIsLoadingMore(false);
+    }
   };
 
   const handleSelectCategory = (catId: string) => {
@@ -52,7 +56,9 @@ export default function Home() {
     if (catId === "all") {
       return;
     }
-    loadMore(catId, 1);
+    startTransition(() => {
+      loadMore(catId, 1);
+    });
   };
 
   const filteredQuestions = questions.filter(q =>
@@ -99,7 +105,7 @@ export default function Home() {
         </div>
 
         {/* --- HIỂN THỊ --- */}
-        {isPending ? (
+        {isPending && questions.length === 0 ? (
           <div className="text-center py-10">
             <div className="animate-spin inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full" />
             <p className="mt-2 text-gray-700 font-medium">Đang tải dữ liệu...</p>
@@ -128,30 +134,32 @@ export default function Home() {
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    {item.options.map((opt, i) => {
-                      const isCorrect = opt === item.correctAnswer;
-                      return (
-                        <div
-                          key={i}
-                          className={`p-3 rounded-lg border text-sm font-medium flex items-start ${isCorrect
-                            ? "bg-green-50 border-green-300 text-green-900"
-                            : "bg-white border-gray-200 text-gray-700"
-                            }`}
-                        >
-                          <span className="mr-2 w-4">
-                            {isCorrect ? "✓" : "•"}
-                          </span>
-                          <div className="flex-1">
-                            <MarkdownRenderer
-                              content={opt}
-                              className="prose prose-sm max-w-none"
-                            />
+                  {item.options.length > 0 &&
+                    <div className="space-y-2">
+                      {item.options.map((opt, i) => {
+                        const isCorrect = opt === item.correctAnswer;
+                        return (
+                          <div
+                            key={i}
+                            className={`p-3 rounded-lg border text-sm font-medium flex items-start ${isCorrect
+                              ? "bg-green-50 border-green-300 text-green-900"
+                              : "bg-white border-gray-200 text-gray-700"
+                              }`}
+                          >
+                            <span className="mr-2 w-4">
+                              {isCorrect ? "✓" : "•"}
+                            </span>
+                            <div className="flex-1">
+                              <MarkdownRenderer
+                                content={opt}
+                                className="prose prose-sm max-w-none"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                        );
+                      })}
+                    </div>
+                  }
                   {/* CORRECT ANSWER */}
                   <div className="mt-4 p-4 rounded-lg bg-green-100 border border-green-300">
                     <p className="text-sm font-bold text-green-800 mb-1">
@@ -167,13 +175,14 @@ export default function Home() {
             ))}
           </div>
         )}
-        {hasMore && !isPending && questions.length > 0 && (
+        {hasMore && questions.length > 0 && (
           <div className="text-center mt-8">
             <button
+              disabled={isLoadingMore}
               onClick={() => loadMore(selectedCategoryId!, page + 1)}
-              className="px-6 py-3 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow"
+              className="px-6 py-3 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow disabled:opacity-50"
             >
-              Tải thêm
+              {isLoadingMore ? "Đang tải..." : "Tải thêm"}
             </button>
           </div>
         )}
