@@ -134,7 +134,7 @@ export default function Home() {
                     />
                   </div>
 
-                  {item.options.length > 0 &&
+                  {item.options.length > 0 && (
                     <div className="space-y-2">
                       {item.options.map((opt, i) => {
                         const isCorrect = opt === item.correctAnswer;
@@ -159,7 +159,7 @@ export default function Home() {
                         );
                       })}
                     </div>
-                  }
+                  )}
                   {/* CORRECT ANSWER */}
                   <div className="mt-4 p-4 rounded-lg bg-green-100 border border-green-300">
                     <p className="text-sm font-bold text-green-800 mb-1">
