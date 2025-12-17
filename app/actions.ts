@@ -41,10 +41,21 @@ export async function getQuestionsByCategory(
             [categoryId, limit, offset]
         );
 
-        return rows.map((row: any) => ({
-            ...row,
-            options: JSON.parse(row.options),
-        }));
+        return rows.map((row: any) => {
+            let options: string[];
+
+            try {
+                options = JSON.parse(row.options);
+                if (!Array.isArray(options)) throw new Error();
+            } catch {
+                options = [row.options]; // dữ liệu cũ
+            }
+
+            return {
+                ...row,
+                options,
+            };
+        });
     } catch (error) {
         console.error("Lỗi DB (getQuestionsByCategory):", error);
         return [];
