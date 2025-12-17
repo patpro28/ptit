@@ -16,24 +16,29 @@ export interface Question {
  * LẤY DANH SÁCH CÂU HỎI THEO CHỦ ĐỀ
  */
 export async function getQuestionsByCategory(
-    categoryId: string
+    categoryId: string,
+    page: number = 1,
+    limit: number = 5
 ): Promise<Question[]> {
     if (!categoryId) return [];
+
+    const offset = (page - 1) * limit;
 
     try {
         const [rows] = await db.query<any[]>(
             `
-      SELECT
-        id,
-        question,
-        options,
-        correct_answer AS correctAnswer,
-        category AS categoryName
-      FROM questions
-      WHERE category = ?
-      ORDER BY id DESC
-      `,
-            [categoryId]
+            SELECT
+                id,
+                question,
+                options,
+                correct_answer AS correctAnswer,
+                category AS categoryName
+            FROM questions
+            WHERE category = ?
+            ORDER BY id DESC
+            LIMIT ? OFFSET ?
+            `,
+            [categoryId, limit, offset]
         );
 
         return rows.map((row: any) => ({

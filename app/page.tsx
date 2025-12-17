@@ -19,30 +19,40 @@ export default function Home() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isPending, startTransition] = useTransition();
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
+  const PAGE_SIZE = 5;
+
+  const loadMore = (catId: string, pageToLoad: number) => {
+    startTransition(async () => {
+      const data = await getQuestionsByCategory(catId, pageToLoad, PAGE_SIZE);
+
+      const catName = categoriesList.find(c => c.value === catId)?.label;
+
+      if (data.length < PAGE_SIZE) {
+        setHasMore(false); // hết dữ liệu
+      }
+
+      setQuestions(prev => [
+        ...prev,
+        ...data.map(q => ({ ...q, categoryName: catName })),
+      ]);
+
+      setPage(pageToLoad);
+    });
+  };
 
   const handleSelectCategory = (catId: string) => {
     setSelectedCategoryId(catId);
+    setQuestions([]);
+    setPage(1);
+    setHasMore(true);
 
     if (catId === "all") {
-      setQuestions([]);
       return;
     }
-
-    startTransition(async () => {
-      try {
-        const data = await getQuestionsByCategory(catId);
-        const catName = categoriesList.find(c => c.value === catId)?.label;
-
-        setQuestions(
-          data.map(q => ({
-            ...q,
-            categoryName: catName,
-          }))
-        );
-      } catch (error) {
-        console.error("Lỗi fetch:", error);
-      }
-    });
+    loadMore(catId, 1);
   };
 
   const filteredQuestions = questions.filter(q =>
@@ -145,6 +155,16 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+        {hasMore && !isPending && questions.length > 0 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => loadMore(selectedCategoryId!, page + 1)}
+              className="px-6 py-3 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 shadow"
+            >
+              Tải thêm
+            </button>
           </div>
         )}
       </div>
