@@ -123,9 +123,18 @@ export async function getQuestionById(id: number) {
 
         if (!rows || rows.length === 0) return null;
 
+        let options: string[];
+
+        try {
+            options = JSON.parse(rows[0].options);
+            if (!Array.isArray(options)) throw new Error();
+        } catch {
+            options = [rows[0].options]; // dữ liệu cũ
+        }
+
         return {
             ...rows[0],
-            options: JSON.parse(rows[0].options),
+            options,
         };
     } catch (error) {
         console.error("Lỗi DB (getQuestionById):", error);
